@@ -1,7 +1,7 @@
 # Corporación Desarrolla Colombia - CDC
 
-# Teléfono: 57 1 3785304
-# Móvil: 57 300 4176404
+Teléfono: 57 1 3785304
+Móvil: 57 300 4176404
 
-# Software web para la administración de procesos llevados por la empresa.
+Software web para la administración de procesos llevados por la empresa.
 
