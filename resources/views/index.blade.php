@@ -309,7 +309,6 @@
 
         <div class="col-lg-5 col-md-8">
           <div class="form">
-            <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
             <form action="#" method="post" role="form" class="contactForm">
               @csrf
