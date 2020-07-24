@@ -25,6 +25,8 @@
 
   <!-- Main Stylesheet File -->
   <link href="assets/css/styleindex.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
 </head>
 
 <body>
@@ -63,23 +65,22 @@
               Iniciar sesión</a>
 
         <div class="dropdown-menu" style="width: 240px;">
-          <form class="px-2 py-2" action="#" method="POST">
-            @csrf
+          <form class="px-2 py-2" onsubmit="login()">
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input type="email" 
-              required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
-              title="Ingresa un E-mail válido" class="form-control" name="email" id="email" placeholder=" email@example.com">
+              <input type="email" title="Ingresa un E-mail válido"
+               pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" 
+               required class="form-control" id="email" placeholder=" email@example.com">
             </div>
             <div class="form-group">
               <label for="password">Clave</label>
-              <input type="password" 
+              <input type="password" required
               pattern="[A-Za-z0-9]{5,15}"
-              title="La contraseña debe ser mínimo 5 y máximo 15 caracteres" 
-              required class="form-control" name="password" id="password" placeholder=" ******">
+              title="La clave debe ser mínimo 5 y máximo 15 caracteres"
+              class="form-control" id="password" placeholder=" ******">
             </div><br>
             <center>
-            <button type="submit" id="submit" name="submit" class="btn_login">Ingresar</button>
+            <button type="submit" id="submit" class="btn_login">Ingresar</button>
             </center>
           </form>
           <div class="dropdown-divider"></div>
@@ -96,11 +97,11 @@
     Hero Section
   ============================-->
   <section id="hero" class="wow fadeIn">
-    <div class="hero-container"><br>
+    <div class="hero-container"><br><br><br><br>
       <h1>Bienvenidos a CDC</h1>
       <h2>Corporación Desarolla Colombia - CDC</h2>
       <img src="assets/img/hero-img.png" alt="img">
-      <a href="#get-started" class="btn-get-started scrollto">Iniciar sesión</a>
+      <a href="#get-started" class="btn-get-started scrollto">Leer más</a>
       <div class="btns">
         <a href="#"><i class="fa fa-play fa-3x"></i> Google Play</a>
       </div>
@@ -317,7 +318,7 @@
                 <div class="validation"></div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" data-rule="email" data-msg="Por favor introduzca una dirección de correo electrónico válida" />
+                <input type="email" class="form-control" placeholder="E-mail" data-rule="email" data-msg="Por favor introduzca una dirección de correo electrónico válida" />
                 <div class="validation"></div>
               </div>
               <div class="form-group">
@@ -366,6 +367,11 @@
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
+      <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+      <script src="assets/Firebasejs/connect.js"></script>
+
+</body>
+
   <!-- JavaScript Libraries -->
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/jquery-migrate.min.js"></script>
@@ -382,17 +388,7 @@
   <!-- Template Main Javascript File -->
   <script src="assets/js/main.js"></script>
 
-
   <!--FIREBASE-->
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+  <script src="assets/Firebasejs/login.js"></script>
 
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="/__/firebase/7.15.5/firebase-analytics.js"></script>
-
-  <!-- Initialize Firebase -->
-  <script src="/__/firebase/init.js"></script>
-
-</body>
 </html>

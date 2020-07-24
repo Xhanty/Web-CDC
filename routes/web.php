@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/firebase', 'FirebaseController@index');
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
