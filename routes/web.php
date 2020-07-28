@@ -2,19 +2,32 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
+// OPCIONES INDEX
 Route::get('/', function () {
     return view('index');
 });
 
+// OPCIONES FLORA
+Route::get('/flora', 'FloraController@index');
+
+// OPCIONES FAUNA
+Route::get('/fauna', 'FaunaController@index');
+
+// OPCIONES SUELO
+Route::get('/suelo', 'SueloController@index');
+
+// OPCIONES AIRE
+Route::get('/aire', 'AireController@index');
+
+// OPCIONES FORESTALES
+Route::get('/forestales', 'ForestalesController@index');
+
+// OPCIONES SOCIAL
+Route::get('/social', 'SocialController@index');
+
+// OPCIONES USUARIOS
+Route::get('/usuarios', 'UsuariosController@index');
+
+// OPCIONES PERFIL Y MENÚ
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/perfil', 'DashboardController@perfil');

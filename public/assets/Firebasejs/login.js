@@ -5,7 +5,11 @@ function login(){
 
     firebase.auth().signInWithEmailAndPassword(email, password)
     .catch(function (error) {
-        swal({
+        Swal.fire({
+            icon: 'error',
+            showCancelButton: false,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Aceptar',
             title: "Error",
             text: "E-mail y/o Clave incorrecta",
         });

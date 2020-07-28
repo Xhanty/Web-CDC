@@ -4,17 +4,13 @@
   <meta charset="utf-8">
   <title>Software CDC</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
-
   <!-- Bootstrap css -->
   <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
   <link href="assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
   <!-- Libraries CSS Files -->
   <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="assets/lib/owlcarousel/assets/owl.theme.default.min.css" rel="stylesheet">
@@ -22,11 +18,10 @@
   <link href="assets/css/animate.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
   integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
   <!-- Main Stylesheet File -->
   <link href="assets/css/styleindex.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.14.2/dist/sweetalert2.all.min.js"></script>
+  
 </head>
 
 <body>
@@ -65,7 +60,7 @@
               Iniciar sesión</a>
 
         <div class="dropdown-menu" style="width: 240px;">
-          <form class="px-2 py-2" onsubmit="login()">
+          <form class="px-2 py-2" onsubmit="login(); return false">
             <div class="form-group">
               <label for="email">E-mail</label>
               <input type="email" title="Ingresa un E-mail válido"
@@ -357,7 +352,7 @@
 
     <div class="copyrights">
       <div class="container">
-        <p>&copy; Copyrights Software CDC.</p>
+        <p>&copy; Todos los derechos reservados Sotfware CDC.</p>
       </div>
     </div>
 
@@ -381,13 +376,10 @@
   <script src="assets/js/easing.min.js"></script>
   <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="assets/js/wow.min.js"></script>
-
   <!-- Contact Form JavaScript File -->
   <script src="assets/js/contactform.js"></script>
-
   <!-- Template Main Javascript File -->
   <script src="assets/js/main.js"></script>
-
   <!--FIREBASE-->
   <script src="assets/Firebasejs/login.js"></script>
 

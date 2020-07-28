@@ -109,9 +109,6 @@ jQuery(document).ready(function( $ ) {
     }
   });
 
-  // Modal video
-  new ModalVideo('.js-modal-btn', {channel: 'youtube'});
-
   // Init Owl Carousel
   $('.owl-carousel').owlCarousel({
     items: 4,

@@ -3,7 +3,11 @@ function logout() {
     firebase.auth().signOut()
     
     .then(function(){
-        swal({
+        Swal.fire({
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Aceptar',
             title: "Alerta",
             text: "Sesión Cerrada!",
         });
@@ -11,9 +15,14 @@ function logout() {
     })
 
     .catch(function(error){
-        swal({
+        Swal.fire({
+            icon: 'danger',
+            showCancelButton: false,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Aceptar',
             title: "Error",
             text: "Ocurrió un error al cerrar la sesión",
         });
+        window.location = "/"
     });
 }
