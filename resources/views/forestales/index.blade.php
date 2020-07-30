@@ -61,15 +61,16 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
              <div class="modal-header text-light" style="background: #143153">
-                <h5 class="modal-title" id="exampleModalLabel">Formulario para agregar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Formulario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span style="color: #fff" aria-hidden="true">&times;</span></button>
                             </div>
-                            <form>
+                            <form id="form" name="form">
+                              @csrf
                                 <div class="modal-body">
                                    <div class="form-group" style="margin-bottom: 20px;"> 
-                                  <select class="form-control" id="formulario">
-                                  <option>Sencillo</option>
-                                  <option>Compuesto</option>
+                                  <select class="form-control" onChange="formulario(this)">
+                                  <option value="0">Sencillo</option>
+                                  <option value="1">Compuesto</option>
                                 </select>
                                    </div>
                                     <input id="id" type="hidden"> <!-- ID que vamos a recibir de firebase -->
@@ -78,37 +79,73 @@
                                     <input id="nombre_regional" type="text" placeholder="Ingrese nombre regional*"  class="form-control" required>
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                    <select id="especie" required class="form-control">
-                                      <option>Seleccione una especie*</option>
-                                      <option>Especie 1</option>
-                                    </select>
-                                    <select id="familia" required class="form-control">
-                                      <option>Seleccione una familia*</option>
-                                      <option>Familia 1</option>
-                                    </select>
+                                    <select id="familia" required class="form-control"></select>
+                                    <select id="especie" required class="form-control"></select>
                                     </div>  
                                     <div class="form-group" style="display: flex">
-                                       <input id="altura_total" placeholder="Ingrese altura total*" type="number" class="form-control" required>
-                                       <input id="altura_comercial" type="number" placeholder="Ingrese altura comercial*" class="form-control" required>
+                                       <input id="altura_total" placeholder="Ingrese altura total (M)*" type="text" class="form-control" required>
+                                       <input id="altura_comercial" type="text" placeholder="Ingrese altura comercial (M)*" class="form-control" required>
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                       <input id="cap_1" placeholder="Ingrese CAP 1*" type="number" class="form-control" required>
-                                       <input id="cap_2" type="number" placeholder="Ingrese CAP 2*" class="form-control" required>
+                                       <input id="cap_1" placeholder="Ingrese CAP 1 (CM)*" type="text" class="form-control" required>
+                                       <input id="cap_2" type="text" placeholder="Ingrese CAP 2 (CM)*" class="form-control" required>
                                     </div>
                                      <div class="form-group" style="display: flex">
-                                       <input id="cap_3" placeholder="Ingrese CAP 3 si posee" type="number" class="form-control">
-                                       <input id="cap_4" type="number" placeholder="Ingrese CAP 4 si posee" class="form-control">
+                                       <input id="cap_3" placeholder="Ingrese CAP 3 si posee (CM)" type="text" class="form-control">
+                                       <input id="cap_4" type="text" placeholder="Ingrese CAP 4 si posee (CM)" class="form-control">
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                       <input id="cap_5" placeholder="Ingrese CAP 5 si lo tiene" type="number" class="form-control">
-                                       <input id="cap_6" type="number" placeholder="Ingrese CAP 6 si posee" class="form-control">
+                                       <input id="cap_5" placeholder="Ingrese CAP 5 si lo tiene (CM)" type="text" class="form-control">
+                                       <input id="cap_6" type="text" placeholder="Ingrese CAP 6 si posee (CM)" class="form-control">
                                     </div>
+                                    <!--COMPUESTO-->
+                                    <div id="compuesto" style="display:none;">
+                                      <div class="form-group" style="display: flex">
+                                       <input id="coor_x" placeholder="Ingrese Coordenada X*" type="text" class="form-control">
+                                       <input id="coor_y" type="text" placeholder="Ingrese Coordenada Y*" class="form-control">
+                                    </div>
+                                     <div class="form-group" style="display: flex">
+                                       <input id="cap_total" placeholder="Ingrese CAP total (CM)*" type="number" class="form-control">
+                                       <input id="dap_total" type="number" placeholder="Ingrese DAP total (CM)*" class="form-control">
+                                    </div>
+                                     <div class="form-group" style="display: flex">
+                                       <input id="area_basa" placeholder="Ingrese Área Basa*" type="text" class="form-control">
+                                       <input id="volumen_to" type="text" placeholder="Ingrese Volumen Total*" class="form-control">
+                                    </div>
+                                    <div class="form-group" style="display: flex">
+                                       <input id="volumen_co" placeholder="Ingrese Volumen Comercial*" type="text" class="form-control">
+                                         <select id="ps" class="form-control">
+                                          <option>Seleccione una PS*</option>
+                                          <option value="Medio">Medio</option>
+                                          <option value="Inferior">Inferior</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group" style="display: flex">
+                                       <select id="rn" class="form-control">
+                                          <option>Seleccione un RN*</option>
+                                          <option value="Ct3">Ct3</option>
+                                        </select>
+                                        <select id="clase_diam" class="form-control">
+                                          <option>Seleccione Clase_diam*</option>
+                                          <option value="I">I</option>
+                                          <option value="II">II</option>
+                                          <option value="III">III</option>
+                                          <option value="IV">IV</option>
+                                          <option value="V">V</option>
+                                          <option value="VI">VI</option>
+                                          <option value="VII">VII</option>
+                                          <option value="VIII">VIII</option>
+                                          <option value="IX">IX</option>
+                                        </select>
+                                    </div>
+                                    </div>
+                                    <!--FIN COMPUESTO-->
                                     <center>
                                     <div class="form-group">
                                       <label for="imagen" class="subir">
                                           <i class="fas fa-cloud-upload-alt"></i> Subir archivo
                                       </label>
-                                      <input type="file" required id="imagen" onchange='cambiar()' type="file" style='display: none;' class="form-control">
+                                      <input type="file" id="imagen" onchange='cambiar()' type="file" style='display: none;' class="form-control">
                                       <div id="info"></div>
                                     </div>
                                     </center>
@@ -126,7 +163,17 @@
         function cambiar(){
         var pdrs = document.getElementById('imagen').files[0].name;
         document.getElementById('info').innerHTML = pdrs;
-    }
+        }
+
+        function formulario(sel) {
+          if (sel.value=="1"){
+              divT = document.getElementById("compuesto");
+              divT.style.display = "";
+          }else{
+              divC = document.getElementById("compuesto");
+              divC.style.display="none";
+          }
+        }
       </script>
     <!-- datatables -->
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
