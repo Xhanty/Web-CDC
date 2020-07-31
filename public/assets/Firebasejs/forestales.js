@@ -79,14 +79,32 @@ $(document).ready(function () {
     $('form').submit(function (e) {
         e.preventDefault();
         let id = $.trim($('#id').val());
-        let numero_campo = $.trim($('#numero_campo').val());
-        let nombre_regional = $.trim($('#nombre_regional').val());
-        let especie = $.trim($('#especie').val());
-        let familia = $.trim($('#familia').val());
-        let altura_total = $.trim($('#altura_total').val());
-        let altura_comercial = $.trim($('#altura_comercial').val());
-        let cap_1 = $.trim($('#cap_1').val());
-        let cap_2 = $.trim($('#cap_2').val());
+        let numero_campo, nombre_regional, especie, familia, altura_total, altura_comercial;
+        let imagen, cap_1, cap_2, cap_3, cap_4, cap_5;
+        let coor_x, coor_y, cap, dap, area_basa, volumen_to, volumen_co, ps, rn, clase_diam;
+        numero_campo = $.trim($('#numero_campo').val());
+        nombre_regional = $.trim($('#nombre_regional').val());
+        especie = $.trim($('#especie').val());
+        familia = $.trim($('#familia').val());
+        altura_total = $.trim($('#altura_total').val());
+        altura_comercial = $.trim($('#altura_comercial').val());
+        imagen = "has";
+        cap_1 = $.trim($('#cap_1').val());
+        cap_2 = $.trim($('#cap_2').val());
+        cap_3 = $.trim($('#cap_3').val());
+        cap_4 = $.trim($('#cap_4').val());
+        cap_5 = $.trim($('#cap_5').val());
+        coor_x = $.trim($('#coor_x').val());
+        coor_y = $.trim($('#coor_x').val());
+        cap = $.trim($('#cap').val());
+        dap = $.trim($('#dap').val());
+        area_basa = $.trim($('#area_basa').val());
+        volumen_to = $.trim($('#volumen_to').val());
+        volumen_co = $.trim($('#volumen_co').val());
+        ps = $.trim($('#ps').val());
+        rn = $.trim($('#rn').val());
+        clase_diam = $.trim($('#clase_diam').val());
+
         let idFirebase = id;
         if (idFirebase == '') {
             idFirebase = coleccionProductos.push().key;
@@ -94,25 +112,26 @@ $(document).ready(function () {
         data = { 
             Altura_Comercial: altura_comercial,
             Altura_Total: altura_total,
-            CAP: 0,
+            CAP: cap,
             CAP_1: cap_1,
             CAP_2: cap_2,
-            CAP_3: 0,
-            CAP_4: 0,
-            CAP_5: 0,
-            Clase_Diam: "II",
-            Coor_X: "has",
-            Coor_Y: "has",
-            DAP: 0,
+            CAP_3: cap_3,
+            CAP_4: cap_4,
+            CAP_5: cap_5,
+            Clase_Diam: clase_diam,
+            Coor_X: coor_x,
+            Coor_Y: coor_y,
+            DAP: dap,
+            Area_Basa: area_basa,
             Especie: especie,
             Familia: familia,
-            Imagen: "has",
+            Imagen: imagen,
             Nombre_Regional: nombre_regional,
             Numero_Campo: numero_campo,  
-            PS: "Inferior",
-            RN: "Ct3",
-            Volumen_Co: "0.1",
-            Volumen_To: "0.1"
+            PS: ps,
+            RN: rn,
+            Volumen_Co: volumen_co,
+            Volumen_To: volumen_to
             
         };
         actualizacionData = {};
@@ -142,24 +161,82 @@ $(document).ready(function () {
         $('#altura_comercial').val('');
         $('#cap_1').val('');
         $('#cap_2').val('');
+        $('#cap_3').val('');
+        $('#cap_4').val('');
+        $('#cap_5').val('');
+        $('#cap_6').val('');
+        $('#coor_x').val('');
+        $('#coor_y').val('');
+        $('#cap').val('');
+        $('#dap').val('');
+        $('#area_basa').val('');
+        $('#volumen_to').val('');
+        $('#volumen_co').val('');
+        $('#ps').val('');
+        $('#rn').val('');
+        $('#clase_diam').val('');
         $("form").trigger("reset");
         $('#modalAltaEdicion').modal('show');
     });
 
     $("#tablaForestales").on("click", ".btnEditar", function () {
+        let id = "";
         filaEditada = table.row($(this).parents('tr'));
         let fila = $('#tablaForestales').dataTable().fnGetData($(this).closest('tr'));
-        let id = fila[0];
-        //console.log(id);
-        let nombre_regional = $(this).closest('tr').find('td:eq(1)').text();
-        let familia = $(this).closest('tr').find('td:eq(2)').text();
-        let especie = $(this).closest('tr').find('td:eq(3)').text();
-        let numero_campo = $(this).closest('tr').find('td:eq(4)').text();
-        $('#id').val(id);
-        $('#nombre_regional').val(nombre_regional);
-        $('#familia').val(familia);
-        $('#especie').val(especie);
-        $('#numero_campo').val(numero_campo);
+        id = fila[0];
+        let nombre_regional, familia, especie, numero_campo, altura_total, altura_comercial;
+        let cap_1, cap_2, cap_3, cap_4, cap_5, cap_6;
+        let coor_x, coor_y, cap, dap, area_basa, volumen_to, volumen_co, ps, rn, clase_diam;
+
+        var coleccioneditar = db.ref().child("Forestales/Inventario/"+id);
+        coleccioneditar.once("value").then(function (snapshot) {
+            nombre_regional = snapshot.child("Nombre_Regional").val();
+            familia = snapshot.child("Familia").val();
+            especie = snapshot.child("Especie").val();
+            numero_campo = snapshot.child("Numero_Campo").val();
+            altura_total = snapshot.child("Altura_Total").val();
+            altura_comercial = snapshot.child("Altura_Comercial").val();
+            cap_1 = snapshot.child("CAP_1").val();
+            cap_2 = snapshot.child("CAP_2").val();
+            cap_3 = snapshot.child("CAP_3").val();
+            cap_4 = snapshot.child("CAP_4").val();
+            cap_5 = snapshot.child("CAP_5").val();
+            cap_6 = 0;
+            coor_x = snapshot.child("Coor_X").val();
+            coor_y = snapshot.child("Coor_Y").val(); 
+            cap = snapshot.child("CAP").val();
+            dap = snapshot.child("DAP").val();
+            area_basa = snapshot.child("Area_Basa").val(); 
+            volumen_to = snapshot.child("Volumen_To").val();
+            volumen_co = snapshot.child("Volumen_Co").val();
+            ps = snapshot.child("PS").val();
+            rn = snapshot.child("RN").val();
+            clase_diam = snapshot.child("Clase_Diam").val();
+
+            $('#id').val(id);
+            $('#nombre_regional').val(nombre_regional);
+            $('#familia').val(familia);
+            $('#especie').val(especie);
+            $('#numero_campo').val(numero_campo);
+            $('#altura_total').val(altura_total);
+            $('#altura_comercial').val(altura_comercial);
+            $('#cap_1').val(cap_1);
+            $('#cap_2').val(cap_2);
+            $('#cap_3').val(cap_3);
+            $('#cap_4').val(cap_4);
+            $('#cap_5').val(cap_5);
+            $('#cap_6').val(cap_6);
+            $('#coor_x').val(coor_x);
+            $('#coor_y').val(coor_y);
+            $('#cap').val(cap);
+            $('#dap').val(dap);
+            $('#area_basa').val(area_basa);
+            $('#volumen_to').val(volumen_to);
+            $('#volumen_co').val(volumen_co);
+            $('#ps').val(ps);
+            $('#rn').val(rn);
+            $('#clase_diam').val(clase_diam);
+        });
         $('#modalAltaEdicion').modal('show');
     });
 

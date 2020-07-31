@@ -38,10 +38,10 @@
                       <tr>
                       <th>ID</th>
                       <th>#</th>
-                      <th>Nombre regional</th>
+                      <th>Nombre_Regional</th>
                       <th>Familia</th>
                       <th>Especie</th>
-                      <th>Identificador</th>
+                      <th>Número_Campo</th>
                       <th>Acciones</th>
                       </tr>
                     </thead>
@@ -68,64 +68,64 @@
                               @csrf
                                 <div class="modal-body">
                                    <div class="form-group" style="margin-bottom: 20px;"> 
-                                  <select class="form-control" onChange="formulario(this)">
+                                  <select class="form-control" data-toggle='tooltip' title='Seleccione un tipo de formulario' onChange="formulario(this)">
                                   <option value="0">Sencillo</option>
                                   <option value="1">Compuesto</option>
                                 </select>
                                    </div>
                                     <input id="id" type="hidden"> <!-- ID que vamos a recibir de firebase -->
                                     <div class="form-group" style="display: flex">       
-                                    <input id="numero_campo" type="text" placeholder="Ingrese número de campo*" class="form-control" required>
-                                    <input id="nombre_regional" type="text" placeholder="Ingrese nombre regional*"  class="form-control" required>
+                                    <input id="numero_campo" data-toggle='tooltip' title='Ingrese número de campo' type="text" placeholder="Ingrese número de campo*" class="form-control" required>
+                                    <input id="nombre_regional" data-toggle='tooltip' title='Ingrese nombre regional' type="text" placeholder="Ingrese nombre regional*"  class="form-control" required>
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                    <select id="familia" required class="form-control"></select>
-                                    <select id="especie" required class="form-control"></select>
+                                    <select id="familia" data-toggle='tooltip' title='Seleccione un tipo de familia' required class="form-control"></select>
+                                    <select id="especie" data-toggle='tooltip' title='Seleccione un tipo de especie' required class="form-control"></select>
                                     </div>  
                                     <div class="form-group" style="display: flex">
-                                       <input id="altura_total" placeholder="Ingrese altura total (M)*" type="text" class="form-control" required>
-                                       <input id="altura_comercial" type="text" placeholder="Ingrese altura comercial (M)*" class="form-control" required>
+                                       <input id="altura_total" data-toggle='tooltip' title='Ingrese altura total (M)' placeholder="Ingrese altura total (M)*" type="text" class="form-control" required>
+                                       <input id="altura_comercial" data-toggle='tooltip' title='Ingrese altura comercial (M)' type="text" placeholder="Ingrese altura comercial (M)*" class="form-control" required>
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                       <input id="cap_1" placeholder="Ingrese CAP 1 (CM)*" type="text" class="form-control" required>
-                                       <input id="cap_2" type="text" placeholder="Ingrese CAP 2 (CM)*" class="form-control" required>
+                                       <input id="cap_1" data-toggle='tooltip' title='Ingrese CAP 1 (CM)' placeholder="Ingrese CAP 1 (CM)*" type="text" class="form-control" required>
+                                       <input id="cap_2" data-toggle='tooltip' title='Ingrese CAP 2 (CM)' type="text" placeholder="Ingrese CAP 2 (CM)*" class="form-control" required>
                                     </div>
                                      <div class="form-group" style="display: flex">
-                                       <input id="cap_3" placeholder="Ingrese CAP 3 si posee (CM)" type="text" class="form-control">
-                                       <input id="cap_4" type="text" placeholder="Ingrese CAP 4 si posee (CM)" class="form-control">
+                                       <input id="cap_3" data-toggle='tooltip' title='Ingrese CAP 3 si posee (CM)' placeholder="Ingrese CAP 3 si posee (CM)" type="text" class="form-control">
+                                       <input id="cap_4" data-toggle='tooltip' title='Ingrese CAP 4 si posee (CM)' type="text" placeholder="Ingrese CAP 4 si posee (CM)" class="form-control">
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                       <input id="cap_5" placeholder="Ingrese CAP 5 si lo tiene (CM)" type="text" class="form-control">
-                                       <input id="cap_6" type="text" placeholder="Ingrese CAP 6 si posee (CM)" class="form-control">
+                                       <input id="cap_5" data-toggle='tooltip' title='Ingrese CAP 5 si posee (CM)' placeholder="Ingrese CAP 5 si lo tiene (CM)" type="text" class="form-control">
+                                       <input id="cap_6" data-toggle='tooltip' title='Ingrese CAP 6 si posee (CM)' type="text" placeholder="Ingrese CAP 6 si posee (CM)" class="form-control">
                                     </div>
                                     <!--COMPUESTO-->
                                     <div id="compuesto" style="display:none;">
                                       <div class="form-group" style="display: flex">
-                                       <input id="coor_x" placeholder="Ingrese Coordenada X*" type="text" class="form-control">
-                                       <input id="coor_y" type="text" placeholder="Ingrese Coordenada Y*" class="form-control">
+                                       <input id="coor_x" data-toggle='tooltip' title='Ingrese Coordenada X' placeholder="Ingrese Coordenada X*" type="text" class="form-control">
+                                       <input id="coor_y" data-toggle='tooltip' title='Ingrese Coordenada Y' type="text" placeholder="Ingrese Coordenada Y*" class="form-control">
                                     </div>
                                      <div class="form-group" style="display: flex">
-                                       <input id="cap_total" placeholder="Ingrese CAP total (CM)*" type="number" class="form-control">
-                                       <input id="dap_total" type="number" placeholder="Ingrese DAP total (CM)*" class="form-control">
+                                       <input id="cap" data-toggle='tooltip' title='Ingrese CAP total (CM)' placeholder="Ingrese CAP total (CM)*" type="text" class="form-control">
+                                       <input id="dap" data-toggle='tooltip' title='Ingrese DAP total (CM)' type="text" placeholder="Ingrese DAP total (CM)*" class="form-control">
                                     </div>
                                      <div class="form-group" style="display: flex">
-                                       <input id="area_basa" placeholder="Ingrese Área Basa*" type="text" class="form-control">
-                                       <input id="volumen_to" type="text" placeholder="Ingrese Volumen Total*" class="form-control">
+                                       <input id="area_basa" data-toggle='tooltip' title='Ingrese Área Basa' placeholder="Ingrese Área Basa*" type="text" class="form-control">
+                                       <input id="volumen_to" data-toggle='tooltip' title='Ingrese Volumen Total' type="text" placeholder="Ingrese Volumen Total*" class="form-control">
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                       <input id="volumen_co" placeholder="Ingrese Volumen Comercial*" type="text" class="form-control">
-                                         <select id="ps" class="form-control">
+                                       <input id="volumen_co" data-toggle='tooltip' title='Ingrese Volumen Comercial' placeholder="Ingrese Volumen Comercial*" type="text" class="form-control">
+                                         <select id="ps" data-toggle='tooltip' title='Seleccione un tipo de PS' class="form-control">
                                           <option>Seleccione una PS*</option>
                                           <option value="Medio">Medio</option>
                                           <option value="Inferior">Inferior</option>
                                         </select>
                                     </div>
                                     <div class="form-group" style="display: flex">
-                                       <select id="rn" class="form-control">
+                                       <select id="rn" data-toggle='tooltip' title='Seleccione un tipo de RN' class="form-control">
                                           <option>Seleccione un RN*</option>
                                           <option value="Ct3">Ct3</option>
                                         </select>
-                                        <select id="clase_diam" class="form-control">
+                                        <select id="clase_diam" data-toggle='tooltip' title='Seleccione una Clase_Diam' class="form-control">
                                           <option>Seleccione Clase_diam*</option>
                                           <option value="I">I</option>
                                           <option value="II">II</option>
@@ -145,7 +145,9 @@
                                       <label for="imagen" class="subir">
                                           <i class="fas fa-cloud-upload-alt"></i> Subir archivo
                                       </label>
-                                      <input type="file" id="imagen" onchange='cambiar()' type="file" style='display: none;' class="form-control">
+                                      <input data-toggle='tooltip' title='Seleccione una imagen' 
+                                      type="file" id="imagen" onchange='cambiar()' type="file" style='display: none;' 
+                                      class="form-control">
                                       <div id="info"></div>
                                     </div>
                                     </center>
