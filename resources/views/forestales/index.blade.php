@@ -149,6 +149,7 @@
                                       type="file" id="imagen" onchange='cambiar()' type="file" style='display: none;' 
                                       class="form-control">
                                       <div id="info"></div>
+                                      <img id="ver_imagen" data-toggle='tooltip' title='Miniatura de la imagen' width="100px" height="100px">
                                     </div>
                                     </center>
                                 </div>

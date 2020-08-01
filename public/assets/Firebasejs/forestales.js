@@ -88,7 +88,7 @@ $(document).ready(function () {
         familia = $.trim($('#familia').val());
         altura_total = $.trim($('#altura_total').val());
         altura_comercial = $.trim($('#altura_comercial').val());
-        imagen = "has";
+        imagen = "https://img.lovepik.com/original_origin_pic/18/03/26/9cfc97e5567a451ecb4344a3b82c79c4.png_wh860.png";
         cap_1 = $.trim($('#cap_1').val());
         cap_2 = $.trim($('#cap_2').val());
         cap_3 = $.trim($('#cap_3').val());
@@ -152,6 +152,7 @@ $(document).ready(function () {
 
     //Botones
     $('#btnNuevo').click(function () {
+        var imagen = "https://img.lovepik.com/original_origin_pic/18/03/26/9cfc97e5567a451ecb4344a3b82c79c4.png_wh860.png";
         $('#id').val('');
         $('#numero_campo').val('');
         $('#nombre_regional').val('');
@@ -159,6 +160,7 @@ $(document).ready(function () {
         $('#familia').val('');
         $('#altura_total').val('');
         $('#altura_comercial').val('');
+        $('#ver_imagen').attr('src', imagen);
         $('#cap_1').val('');
         $('#cap_2').val('');
         $('#cap_3').val('');
@@ -185,7 +187,7 @@ $(document).ready(function () {
         let fila = $('#tablaForestales').dataTable().fnGetData($(this).closest('tr'));
         id = fila[0];
         let nombre_regional, familia, especie, numero_campo, altura_total, altura_comercial;
-        let cap_1, cap_2, cap_3, cap_4, cap_5, cap_6;
+        let imagen, cap_1, cap_2, cap_3, cap_4, cap_5, cap_6;
         let coor_x, coor_y, cap, dap, area_basa, volumen_to, volumen_co, ps, rn, clase_diam;
 
         var coleccioneditar = db.ref().child("Forestales/Inventario/"+id);
@@ -196,12 +198,13 @@ $(document).ready(function () {
             numero_campo = snapshot.child("Numero_Campo").val();
             altura_total = snapshot.child("Altura_Total").val();
             altura_comercial = snapshot.child("Altura_Comercial").val();
+            imagen = snapshot.child("Imagen").val();
             cap_1 = snapshot.child("CAP_1").val();
             cap_2 = snapshot.child("CAP_2").val();
             cap_3 = snapshot.child("CAP_3").val();
             cap_4 = snapshot.child("CAP_4").val();
             cap_5 = snapshot.child("CAP_5").val();
-            cap_6 = 0;
+            cap_6 = snapshot.child("CAP_6").val();
             coor_x = snapshot.child("Coor_X").val();
             coor_y = snapshot.child("Coor_Y").val(); 
             cap = snapshot.child("CAP").val();
@@ -220,6 +223,7 @@ $(document).ready(function () {
             $('#numero_campo').val(numero_campo);
             $('#altura_total').val(altura_total);
             $('#altura_comercial').val(altura_comercial);
+            $('#ver_imagen').attr('src', imagen);
             $('#cap_1').val(cap_1);
             $('#cap_2').val(cap_2);
             $('#cap_3').val(cap_3);
