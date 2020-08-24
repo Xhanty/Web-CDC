@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ForestalesController extends Controller
 {
@@ -16,4 +18,7 @@ class ForestalesController extends Controller
         return view('forestales/index');
     }
 
+    public function reportexcel(){
+        return Excel::download(new ForestalesExport, 'reporte-list.xlsx');
+    }
 }

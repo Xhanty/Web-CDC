@@ -42,6 +42,7 @@ $(document).ready(function () {
         info: true,
         responsive: true,
         autoWidth: false,
+        dom: 'Bfrtilp',
         lengthMenu: [[50, 300, 500, 1000, -1], [50, 300, 500, 1000, 'Todos']],
         pageLength: 50,
         data: dataSet,
@@ -272,6 +273,46 @@ $(document).ready(function () {
             }
         })
     });
+
+    $("#tablaForestales").on("click", ".btnReporteU", function () {
+        let fila = $('#tablaForestales').dataTable().fnGetData($(this).closest('tr'));
+        let id = fila[0];
+        var coleccionreporte = db.ref().child("Forestales/Inventario/" + id);
+        Swal.fire({
+            title: '¿Elige una opción?',
+            text: "¡Tipo de reporte!",
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonText: 'PDF',
+            confirmButtonColor: '#0D930B',
+            cancelButtonColor: '#3265DC',
+            confirmButtonText: 'EXCEL'
+        }).then((result) => {
+            if (result.value) {
+                reportexcel(coleccionreporte);
+                Swal.fire({
+                    title: 'EXCEL',
+                    text: id,
+                    icon: 'question'
+                });
+            } 
+
+            else{
+                Swal.fire({
+                    title: 'PDF',
+                    text: id,
+                    icon: 'question'
+                });
+            }
+        })
+    });
+
+    function reportexcel(coleccionreporte){
+        console.log(coleccionreporte);
+        /*coleccionreporte.once("value").then(function (snapshot) {
+
+        });*/
+    }
 
     //LENNAR SELECTS
     var selectespecie = document.getElementById("especie");
