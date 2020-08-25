@@ -31,7 +31,14 @@
               <div class="card-header">
                 <h4 class="card-title"> Lista de árboles</h4>
               </div>
-              <div class="card-body">
+              
+              <div class='wrapper text-right'>
+                <div class='btn-group'>
+                  <a class='btn btn-success' href="#" id="excelg">Excel</a>
+                </div>
+              </div>
+
+                  <div class="card-body">
                 <div class="table-responsive">
                   <table id="tablaForestales" name="tablaForestales" class="table table-striped table-bordered">
                     <thead class="text-primary">
@@ -179,7 +186,8 @@
         }
       </script>
     <!-- datatables -->
+    <script lang="javascript" src="assets/js/FileSaver.min.js"></script>
+    <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.3/xlsx.full.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="assets/Firebasejs/forestales.js"></script>
-  
 @endsection

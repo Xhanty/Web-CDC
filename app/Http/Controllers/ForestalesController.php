@@ -17,8 +17,4 @@ class ForestalesController extends Controller
     public function index(){
         return view('forestales/index');
     }
-
-    public function reportexcel(){
-        return Excel::download(new ForestalesExport, 'reporte-list.xlsx');
-    }
 }

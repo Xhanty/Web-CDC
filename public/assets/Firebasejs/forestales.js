@@ -56,6 +56,7 @@ $(document).ready(function () {
                 defaultContent: "<div class='wrapper text-center'><div class='btn-group'><button class='btnReporteU btn btn-warning' data-toggle='tooltip' title='Seguimiento'>" + iconoReporte + "<button class='btnEditar btn btn-success' data-toggle='tooltip' title='Editar'>" + iconoEditar + "</button><button class='btnBorrar btn btn-danger' data-toggle='tooltip' title='Borrar'>" + iconoBorrar + "</button></div></div>"
             }
         ]
+        
     });
 
     var i = 1;
@@ -290,11 +291,6 @@ $(document).ready(function () {
         }).then((result) => {
             if (result.value) {
                 reportexcel(coleccionreporte);
-                Swal.fire({
-                    title: 'EXCEL',
-                    text: id,
-                    icon: 'question'
-                });
             } 
 
             else{
@@ -308,10 +304,64 @@ $(document).ready(function () {
     });
 
     function reportexcel(coleccionreporte){
-        console.log(coleccionreporte);
-        /*coleccionreporte.once("value").then(function (snapshot) {
+        let nombre_regional, familia, especie, numero_campo, altura_total, altura_comercial;
+        let imagen, cap_1, cap_2, cap_3, cap_4, cap_5;
+        let coor_x, coor_y, cap, dap, area_basa, volumen_to, volumen_co, ps, rn, clase_diam;
+        var ws_data;
+        coleccionreporte.once("value").then(function (snapshot) {
+            nombre_regional = snapshot.child("Nombre_Regional").val();
+            familia = snapshot.child("Familia").val();
+            especie = snapshot.child("Especie").val();
+            numero_campo = snapshot.child("Numero_Campo").val();
+            altura_total = snapshot.child("Altura_Total").val();
+            altura_comercial = snapshot.child("Altura_Comercial").val();
+            cap_1 = snapshot.child("CAP_1").val();
+            cap_2 = snapshot.child("CAP_2").val();
+            cap_3 = snapshot.child("CAP_3").val();
+            cap_4 = snapshot.child("CAP_4").val();
+            cap_5 = snapshot.child("CAP_5").val();
+            coor_x = snapshot.child("Coor_X").val();
+            coor_y = snapshot.child("Coor_Y").val();
+            cap = snapshot.child("CAP").val();
+            dap = snapshot.child("DAP").val();
+            area_basa = snapshot.child("Area_Basa").val();
+            volumen_to = snapshot.child("Volumen_To").val();
+            volumen_co = snapshot.child("Volumen_Co").val();
+            ps = snapshot.child("PS").val();
+            rn = snapshot.child("RN").val();
+            clase_diam = snapshot.child("Clase_Diam").val();
 
-        });*/
+            ws_data = [[1, 
+                coor_x, coor_y, 
+                numero_campo, nombre_regional, 
+                especie, familia,
+                cap_1, cap_2, cap_3, cap_4, cap_5,
+                altura_total, altura_comercial,
+                cap, dap, area_basa, volumen_to,
+                volumen_co, ps, rn, clase_diam
+            ]];
+
+            var wb = XLSX.utils.book_new();
+            wb.Props = {
+                Title: "Inventario_Forestal",
+                Subject: "Inventario_Forestal",
+                Author: "Sofware CDC",
+                CreatedDate: new Date()
+            };
+
+            wb.SheetNames.push("Inventario_Forestal");
+            var ws = XLSX.utils.aoa_to_sheet(ws_data);
+            wb.Sheets["Inventario_Forestal"] = ws;
+            var wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'binary' });
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+
+            }
+            saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'PLANILLAS-FORESTAL.xlsx');
+        });
     }
 
     //LENNAR SELECTS
