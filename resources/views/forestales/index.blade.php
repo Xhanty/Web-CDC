@@ -168,6 +168,38 @@
                     </div>
                 </div>
                 </div>
+
+                <div id="imprimir">
+                  <!---<img width="100px" height="100px" style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px; margin-top: 20px;"
+                         src="assets/img/alcaldia.png">-->
+                  <table border="2px">
+                    <tr>
+                      <th rowspan="5">FICHA TÉCNICA DE REGISTRO</th>
+                      <td>Radicado</td>
+                      <td> xxx </td>
+                    </tr>
+
+                      <tr>
+                        <td>Elaboró</td>
+                        <td> xxx </td>
+                      </tr>
+
+                      <tr>
+                        <td>Fecha Aprob.</td>
+                        <td> xxx </td>
+                      </tr>
+
+                      <tr>
+                        <td>Revisó</td>
+                        <td> xxx </td>
+                      </tr>
+
+                      <tr>
+                        <td>Página</td>
+                        <td>3 de 32</td>
+                      </tr>
+                  </table>
+              </div>
       
       <script>
         function cambiar(){
@@ -186,6 +218,8 @@
         }
       </script>
     <!-- datatables -->
+    <script src="assets/js/jspdf.min.js"></script>
+    <script src="assets/js/jspdf.plugin.autotable.min.js"></script>
     <script lang="javascript" src="assets/js/FileSaver.min.js"></script>
     <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.10.3/xlsx.full.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>

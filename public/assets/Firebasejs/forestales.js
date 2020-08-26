@@ -292,20 +292,15 @@ $(document).ready(function () {
             if (result.value) {
                 reportexcel(coleccionreporte);
             } 
-
             else{
-                Swal.fire({
-                    title: 'PDF',
-                    text: id,
-                    icon: 'question'
-                });
+                reportepdf(coleccionreporte);
             }
         })
     });
 
     function reportexcel(coleccionreporte){
         let nombre_regional, familia, especie, numero_campo, altura_total, altura_comercial;
-        let imagen, cap_1, cap_2, cap_3, cap_4, cap_5;
+        let cap_1, cap_2, cap_3, cap_4, cap_5;
         let coor_x, coor_y, cap, dap, area_basa, volumen_to, volumen_co, ps, rn, clase_diam;
         var ws_data;
         coleccionreporte.once("value").then(function (snapshot) {
@@ -331,14 +326,17 @@ $(document).ready(function () {
             rn = snapshot.child("RN").val();
             clase_diam = snapshot.child("Clase_Diam").val();
 
-            ws_data = [[1, 
-                coor_x, coor_y, 
-                numero_campo, nombre_regional, 
-                especie, familia,
-                cap_1, cap_2, cap_3, cap_4, cap_5,
-                altura_total, altura_comercial,
-                cap, dap, area_basa, volumen_to,
-                volumen_co, ps, rn, clase_diam
+            ws_data = [["#: " + 1, 
+                "Coor_X: " + coor_x, "Coor_Y: " + coor_y, 
+                "Número_Campo: " + numero_campo, "Nombre_Regional: " + nombre_regional, 
+                "Especie: " + especie, "Familia: " + familia,
+                "CAP_1: " + cap_1 + " CM", "CAP_2: " + cap_2 + " CM", 
+                "CAP_3: " + cap_3 + " CM", "CAP_4: " + cap_4 + " CM", 
+                "CAP_5: " + cap_5 + " CM", "Altura_Comercial: " + altura_total + " M", 
+                "Altura_Comercial: " + altura_comercial + " M", "CAP: " + cap + " CM",
+                "DAP: " + dap + " CM", "Área_Basa: " + area_basa, 
+                "Volumen_TO: " + volumen_to, "Volumen_CO: " + volumen_co,
+                "PS: " + ps, "RN: "+ rn, "Clase_Diam: " + clase_diam
             ]];
 
             var wb = XLSX.utils.book_new();
@@ -362,6 +360,43 @@ $(document).ready(function () {
             }
             saveAs(new Blob([s2ab(wbout)], { type: "application/octet-stream" }), 'PLANILLAS-FORESTAL.xlsx');
         });
+    }
+
+    function reportepdf(coleccionreporte){
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#imprimir')[0];
+
+        specialElementHandlers = {
+            '#bypassme': function (element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+
+        pdf.fromHTML(
+            source,
+            margins.left, // x coord
+            margins.top, { // y coord
+            'width': margins.width,
+            'elementHandlers': specialElementHandlers
+        },
+            function (dispose) {
+                pdf.save('Prueba.pdf');
+            }, margins
+        );
+
+        /*pdf.text(20, 20, "Inventario_Forestal");
+        var columns = ["Nombre_Regional", "Familia", "Especie", "Número_Campo"];
+        var data = [["asd", "Hola", "asdasd", "Mexico"]];
+        pdf.autoTable(columns, data,
+            { margin: { top: 25 } }
+        );
+        pdf.save('Inventario_Forestal.pdf');*/
     }
 
     //LENNAR SELECTS
