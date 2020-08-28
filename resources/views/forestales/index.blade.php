@@ -168,39 +168,267 @@
                     </div>
                 </div>
                 </div>
+      <div id="imprimir" style="display: none">
+        <style>
+          .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+          }
 
-                <div id="imprimir">
-                  <!---<img width="100px" height="100px" style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px; margin-top: 20px;"
-                         src="assets/img/alcaldia.png">-->
-                  <table border="2px">
-                    <tr>
-                      <th rowspan="5">FICHA TÉCNICA DE REGISTRO</th>
-                      <td>Radicado</td>
-                      <td> xxx </td>
-                    </tr>
+body {
+  position: relative;
+  width: 21cm;  
+  height: 29.7cm; 
+  margin: 0 auto; 
+  color: #555555;
+  background: #FFFFFF; 
+  font-family: Arial, sans-serif; 
+  font-size: 14px; 
+  font-family: SourceSansPro;
+}
 
-                      <tr>
-                        <td>Elaboró</td>
-                        <td> xxx </td>
-                      </tr>
+header {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #AAAAAA;
+}
 
-                      <tr>
-                        <td>Fecha Aprob.</td>
-                        <td> xxx </td>
-                      </tr>
+#logo {
+  float: left;
+  margin-top: 8px;
+}
 
-                      <tr>
-                        <td>Revisó</td>
-                        <td> xxx </td>
-                      </tr>
+#logo img {
+  height: 110px;
+}
 
-                      <tr>
-                        <td>Página</td>
-                        <td>3 de 32</td>
-                      </tr>
-                  </table>
+#company {
+  float: right;
+  text-align: right;
+}
+
+
+#details {
+  margin-bottom: 50px;
+}
+
+#client {
+  font-size: 1.1em;
+  font-family: normal;
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;
+  float: left;
+}
+
+#client .to {
+  color: #777777;
+}
+
+h2.name {
+  font-size: 1.4em;
+  font-weight: normal;
+  margin: 0;
+}
+
+#invoice {
+  float: right;
+  text-align: right;
+}
+
+#invoice .date {
+  font-size: 1.1em;
+  color: #777777;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 20px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  background: #EEEEEE;
+  text-align: center;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+table th {
+  white-space: nowrap;        
+  font-weight: normal;
+}
+
+table td {
+  text-align: right;
+}
+
+table td h3{
+  color: #57B223;
+  font-size: 1em;
+  font-weight: normal;
+  margin: 0 0 0.2em 0;
+}
+
+table .no {
+  color: #FFFFFF;
+  font-size: 1em;
+  background: #57B223;
+}
+
+table .desc {
+  text-align: left;
+}
+
+table .unit {
+  background: #DDDDDD;
+}
+
+table .total {
+  background: #57B223;
+  color: #FFFFFF;
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1em;
+}
+
+table tbody tr:last-child td {
+  border: none;
+}
+
+#notices{
+  padding-left: 6px;
+  border-left: 6px solid #0087C3;  
+}
+
+#notices .notice {
+  font-size: 1.2em;
+}
+
+footer {
+  color: #777777;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #AAAAAA;
+  padding: 8px 0;
+  text-align: center;
+}
+
+
+        </style>
+            <header class="clearfix">
+            <div id="logo">
+              <img src="assets/img/alcaldia.png">
+            </div>
+            <div id="company">
+              <h2 class="name" style="font-family: bold;">FICHA TÉCNICA DE REGISTRO</h2>
+              <div>Radicado: xxx</div>
+              <div>Elaboró: xxx</div>
+              <div>Fecha Aprob: xxx</div>
+              <div>Revisó: xxx</div>
+              <div>Aprobó: xxx</div>
+              <div>Página: 3 de 32</div>
+            </div>
+          </header>
+          <main>
+            <div id="details" class="clearfix">
+              <div id="client" style="font-size: 1.1em;">
+                <div>Fecha: 20/02/2020</div>
+                <div>Especie: Ciprés</div>
+                <div>Nombre Cien: Cupressus lusitanica</div>
+                <div>Arbol: 3</div><br>
+                <img width="200px" height="200px" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Raunkiaer.jpg">
               </div>
-      
+              <div id="invoice">
+                <div class="date">Sitio de visita: Medellín-Antioquia</div>
+                <div class="date">Solicitante: xxx</div>
+                <div class="date">Dirección Solic: xxx</div>
+                <div class="date">CC O NIT: xxx</div>
+                <img width="200px" height="200px" src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Raunkiaer.jpg">
+              </div>
+            </div>
+            <div style="margin-top: -30px" id="notices">
+              <div style="font-family: bold;">ESTADO FÍSICO:</div>
+              <div class="notice">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua.</div>
+            </div><br>
+            <div id="notices">
+              <div style="font-family: bold;">ESTADO SANITARIO:</div>
+              <div class="notice">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua.</div>
+            </div><br>
+            <div style="display: flex;">
+            <table style="max-width: 40%;" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td style="text-align: left; width: 60%;" class="no">DAP (CM)</td>
+                  <td class="unit">400 (CM)</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Altura Total (M)</td>
+                  <td class="unit">40 (M)</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Altura Comercial (M)</td>
+                  <td class="unit">40 (M)</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Volumen (M3)</td>
+                  <td class="unit">400 (M3)</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Diam Copa (M)</td>
+                  <td class="unit">40.00 (M)</td>
+                </tr>
+              </tbody>
+            </table>
+            <table style="max-width: 40%; margin-left: 150px;" border="0" cellspacing="0" cellpadding="0">
+              <tbody>
+                <tr>
+                  <td style="text-align: left; width: 60%;" class="no">Poda</td>
+                  <td class="unit">_</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Tala</td>
+                  <td class="unit">X</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Bloqueo y Traslado</td>
+                  <td class="unit">_</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Conservar</td>
+                  <td class="unit">_</td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;" class="no">Tratamiento integral</td>
+                  <td class="unit">_</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            <div id="notices">
+              <div style="font-family: bold;">CONCEPTO TÉCNICO:</div>
+              <div class="notice">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua.</div>
+            </div><br>
+            <div id="notices">
+              <div style="font-family: bold;">CAUSAS DE INTERVENCIÓN:</div>
+              <div class="notice">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua.</div>
+            </div>
+          </main>
+          <footer>
+            SOFWARE CDC
+          </footer>
+      </div>
       <script>
         function cambiar(){
         var pdrs = document.getElementById('imagen').files[0].name;
